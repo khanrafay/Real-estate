@@ -48,7 +48,6 @@ interface HomeType {
 const Home: NextPage = ({ propertiesForRent, propertiesForSale }: HomeType) => {
   return (
     <div >
-      <h1>Hello world</h1>
       <Banner
         purpose='Rent a home'
         title1="Rental homes for"
