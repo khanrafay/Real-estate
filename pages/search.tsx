@@ -6,10 +6,11 @@ import { Flex, Box, Text, Icon } from '@chakra-ui/react';
 import { BsFilter } from 'react-icons/bs';
 import SearchFilters from "../components/SearchFilters";
 import { baseUrl, fetchApi } from "../utils/fetchApi";
-import Property from "../components/property";
-import Noresult from '../assets/images/noresult.svg';
 
-const Search = ({properties}:any) => {
+import Noresult from '../assets/images/noresult.svg';
+import Property from "../components/Property";
+
+const Search = ({ properties }: any) => {
 
     const [searchFilters, setSearchFilters] = useState(false);
     const router = useRouter();
@@ -64,13 +65,13 @@ export async function getServerSideProps({ query }: any) {
     const areaMax = query.areaMax || '35000';
     const locationExternalIDs = query.locationExternalIDs || '5002';
     const categoryExternalID = query.categoryExternalID || '4';
-  
+
     const data = await fetchApi(`${baseUrl}/properties/list?locationExternalIDs=${locationExternalIDs}&purpose=${purpose}&categoryExternalID=${categoryExternalID}&bathsMin=${bathsMin}&rentFrequency=${rentFrequency}&priceMin=${minPrice}&priceMax=${maxPrice}&roomsMin=${roomsMin}&sort=${sort}&areaMax=${areaMax}`);
 
     return {
-      props: {
-        properties: data?.hits,
-      },
+        props: {
+            properties: data?.hits,
+        },
     };
-  }
+}
 
